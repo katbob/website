@@ -11,7 +11,10 @@ def main_page():
 
 @app.route('/<string:pagename>')
 def render_page(pagename):
-    return render_template((pagename + '.html'))
+    if '.html' in pagename:
+        return render_template(pagename)
+    else:
+        return render_template((pagename + '.html'))
 
 
 def write_to_file(data):
